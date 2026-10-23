@@ -41,7 +41,17 @@
         } // cfg);
     in {
         nixosConfigurations = {
-            legion = mkHost "legion" {};
+            dixie = mkhost "dixie" {
+                users = [ modules/users/elliana.nix ];
+                primaryUser = "elliana";
+                hardware = { vmguest = true; };
+                extra    = { yubikey = true; };
+                desktop  = "hyprland";
+            };
+            legion = mkHost "legion" {
+                users = [ modules/users/elliana.nix ];
+                primaryUser = "elliana";
+            };
             mnemosyne = mkHost "mnemosyne" {
                 primaryUser = "nixos";
                 hardware = { liveiso = true; vmguest = true; };
