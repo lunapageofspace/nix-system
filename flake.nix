@@ -41,7 +41,7 @@
         } // cfg);
     in {
         nixosConfigurations = {
-            dixie = mkhost "dixie" {
+            dixie = mkHost "dixie" {
                 users = [ modules/users/elliana.nix ];
                 primaryUser = "elliana";
                 hardware = { vmguest = true; };
