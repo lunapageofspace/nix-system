@@ -21,8 +21,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         home-config = {
-            url = "git+file:///home/elliana/Code/nix-home";
-            #url = "github:lunapageofspace/nix-home";
+            #url = "git+file:///home/elliana/Code/nix-home";
+            url = "github:lunapageofspace/nix-home";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         agenix = {
