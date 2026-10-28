@@ -15,7 +15,10 @@
 let
     pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ (import ../overlays/pkgs) ];
+        overlays = [
+            (import ../overlays/pkgs)
+            inputs.eden.overlays.default
+        ];
         config.allowUnfree = true;
     };
     pkgs-unstable = import inputs.nixpkgs-unstable {
