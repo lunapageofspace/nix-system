@@ -7,4 +7,10 @@
     disableWhileTyping = true;
     clickMethod = "clickfinger";
   };
+  imports = [
+      ./audio.nix
+      ./flatpak.nix
+      ./fonts.nix
+      ./packages.nix
+  ];
 }

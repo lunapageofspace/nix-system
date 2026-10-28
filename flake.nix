@@ -4,18 +4,6 @@
     inputs = {
         nixpkgs.url         = "github:NixOS/nixpkgs/nixos-26.05";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-        nixos-hardware.url  = "github:nixos/nixos-hardware";
-        impermanence = {
-            url = "github:nix-community/impermanence";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-        nix-flatpak = {
-            url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
-        };
-        eden = {
-            url = "github:daaboulex/eden-nix";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -23,10 +11,6 @@
         home-config = {
             #url = "git+file:///home/elliana/Code/nix-home";
             url = "github:lunapageofspace/nix-home";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-        agenix = {
-            url = "github:ryantm/agenix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
@@ -42,15 +26,20 @@
     in {
         nixosConfigurations = {
             dixie = mkHost "dixie" {
-                users = [ modules/users/elliana.nix ];
                 primaryUser = "elliana";
-                hardware = { vmguest = true; };
-                extra    = { yubikey = true; };
+                users = [ modules/users/elliana.nix ];
+                extraModules = [ modules/gaming ];
+                hardware = { vmguest = true; hypervisor = true; };
+                extra    = { yubikey = true; fullDesktop = true; };
                 desktop  = "plasma";
             };
             legion = mkHost "legion" {
-                users = [ modules/users/elliana.nix ];
                 primaryUser = "elliana";
+                users = [ modules/users/elliana.nix ];
+                extraModules = [ modules/gaming ];
+                hardware = { vmguest = true; hypervisor = true; };
+                extra    = { yubikey = true; fullDesktop = true; };
+                desktop  = "plasma";
             };
             mnemosyne = mkHost "mnemosyne" {
                 primaryUser = "nixos";

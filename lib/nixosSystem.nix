@@ -15,10 +15,7 @@
 let
     pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [
-            (import ../overlays/pkgs)
-            inputs.eden.overlays.default
-        ];
+        overlays = [(import ../overlays/pkgs)];
         config.allowUnfree = true;
     };
     pkgs-unstable = import inputs.nixpkgs-unstable {
@@ -39,7 +36,6 @@ in lib.nixosSystem {
         ../modules/general
         ../modules/hardware
         #../modules/ml
-        inputs.agenix.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
         { 
             system.stateVersion = version;
@@ -47,7 +43,7 @@ in lib.nixosSystem {
             home-manager = {
                 useGlobalPkgs   = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit inputs desktop version pkgs-unstable; };
+                extraSpecialArgs = { inherit inputs hardware extra desktop version pkgs-unstable; };
             };
         }
     ]

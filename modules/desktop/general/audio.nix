@@ -1,6 +1,5 @@
 { pkgs, ... }: {
     # Pipewire Audio
-    nixpkgs.config.pipewire = true;
     security.rtkit.enable = true;
     services.pulseaudio.enable = false;
     services.pipewire = {
