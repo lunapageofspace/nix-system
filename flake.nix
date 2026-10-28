@@ -46,7 +46,7 @@
                 primaryUser = "elliana";
                 hardware = { vmguest = true; };
                 extra    = { yubikey = true; };
-                desktop  = "hyprland";
+                desktop  = "plasma";
             };
             legion = mkHost "legion" {
                 users = [ modules/users/elliana.nix ];
