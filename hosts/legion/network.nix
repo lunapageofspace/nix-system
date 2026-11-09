@@ -12,7 +12,7 @@
             };
             networking.interfaces = {
                 "bridge0" = { # Shared bridge for VLANs
-                    useDHCP = true;
+                    useDHCP = false;
                 };
                 "bridge0.10" = { # Management VLAN
                     useDHCP = false;
@@ -21,6 +21,11 @@
                         prefixLength = 24;
                     }];
                 };
+            };
+            networking.defaultGateway = {
+                address = "172.22.0.254";
+                interface = "bridge0.10";
+                source = "172.22.0.2";
             };
         }
         { # System Firewall
