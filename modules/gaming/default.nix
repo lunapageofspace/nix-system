@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ hardware ? {}, pkgs, lib, ... }: lib.mkIf ((hardware.gaming or false) == true) {
     # ntsync: low-latency Wine/Proton synchronization
     boot.kernelModules = ["ntsync"];
 

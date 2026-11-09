@@ -29,15 +29,15 @@
                 primaryUser = "elliana";
                 users = [ modules/users/elliana.nix ];
                 extraModules = [ modules/gaming ];
-                hardware = { vmguest = true; hypervisor = true; };
-                extra    = { yubikey = true; fullDesktop = true; };
+                hardware = { vmguest = true; };
+                extra    = { yubikey = true; };
                 desktop  = "plasma";
             };
             legion = mkHost "legion" {
                 primaryUser = "elliana";
                 users = [ modules/users/elliana.nix ];
-                extraModules = [ modules/gaming ];
-                hardware = { vmguest = true; hypervisor = true; };
+                extraModules = [ modules/gaming modules/ml ];
+                hardware = { vmguest = true; hypervisor = true; gaming = true; };
                 extra    = { yubikey = true; fullDesktop = true; };
                 desktop  = "plasma";
             };
